@@ -1,0 +1,733 @@
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact" style="margin-top: 100px;">
+        <div class="container">
+  
+          <div class="section-title" data-aos="fade-up">
+            <h2>Commande</h2>
+          </div>
+  
+          <div class="row" >
+            <div class="col-lg-5 col-md-12" data-aos="fade-up" data-aos-delay="300">
+              <form  class="php-email-form" [formGroup]="addOrderForm">
+
+
+                <div class="form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Nom" value="{{connected.name}}" required>
+                </div>
+                
+                <div class="form-group">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="{{connected.email}}" required>
+                </div>
+                   
+                <div class="form-group">
+                    <input type="tel" name="tel" class="form-control" id="tel" placeholder="numero"  value="{{connected.tel}}" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="adress" class="form-control" id="adress" placeholder="n° / rue / ville" [(ngModel)]="order.adress" formControlName="adress" required>
+                  </div>
+                  <!-- adress alt -->
+                  <div *ngIf="addOrderForm.controls['adress'].invalid && (addOrderForm.controls['adress'].dirty || addOrderForm.controls['adress'].touched)" class="alert alert-danger">
+
+                        <div *ngIf="addOrderForm.controls['adress'].errors.required" class="text-danger">
+                            adress obligatoire
+                        </div>
+                        </div>
+                      <!-- /adress alt -->
+                      <div class="form-group">
+                            <label for="gouvSelect">Gouvernorat :</label>
+                        <select class="form-control" id="gouvSelect" [(ngModel)]="order.zone" formControlName="zone"  required>
+                          <option value="ariana">Ariana</option>
+                          <option value="beja">Béja</option>
+                          <option value="benarous">Ben Arous</option>
+                          <option value="bizerte">Bizerte</option>
+                          <option value="gabes">Gabès</option>
+                          <option value="gafsa">Gafsa</option>
+                          <option value="jendouba">Jendouba</option>
+                          <option value="kairouan">Kairouan</option>
+                          <option value="kasserine">Kasserine</option>
+                          <option value="kebili">Kébili</option>
+                          <option value="kef">Le Kef</option>
+                          <option value="mahdia">Mahdia</option>
+                          <option value="manouba">La Manouba</option>
+                          <option value="medenine">Médenine</option>
+                          <option value="monastir">Monastir</option>
+                          <option value="nabeul">Nabeul</option>
+                          <option value="sfax">Sfax</option>
+                          <option value="sidiBouzid">SidiBouzid</option>
+                          <option value="siliana">Siliana</option>
+                          <option value="sousse">Sousse</option>
+                          <option value="tataouine">Tataouine</option>
+                          <option value="tozeur">Tozeur</option>
+                          <option value="tunis">Tunis</option>
+                          <option value="zaghouan">Zaghouan</option>
+                        </select>
+                      </div>
+                         <!-- zone alt -->
+                    <div *ngIf="addOrderForm.controls['zone'].invalid && (addOrderForm.controls['zone'].dirty || addOrderForm.controls['zone'].touched)">
+  
+                      <div *ngIf="addOrderForm.controls['zone'].errors.required" class="text-danger">
+                          zone obligatoire
+                      </div>
+                      </div>
+                    <!-- /zone alt -->
+                  <div class="form-group">
+                    <input type="datetime-local" name="date" class="form-control" id="date" [(ngModel)]="order.date" formControlName="date" required>
+                  </div>
+                  <!-- date alt -->
+                  <div *ngIf="addOrderForm.controls['date'].invalid && (addOrderForm.controls['date'].dirty || addOrderForm.controls['date'].touched)" class="alert alert-danger">
+
+                        <div *ngIf="addOrderForm.controls['date'].errors.required" class="text-danger">
+                            date obligatoire
+                        </div>
+                        </div>
+                      <!-- /date alt -->
+                  <div class="form-group">
+                        <label for="serviceSelect">Service :</label>
+                    <select class="form-control" id="serviceSelect" [(ngModel)]="order.service" formControlName="service">
+                      <option value="plumbing">plomberie</option>
+                      <option value="electricity">electricité</option>
+                      <option value="cooling">climatisation</option>
+                      <option value="heating">chauffage</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                        <label for="select">Votre besoin : </label>
+                    <select class="form-control" id="select" required [(ngModel)]="order.cathegory" formControlName="cathegory"><option disabled value="" >Votre besoin ?</option> <option disabled value="">
+          
+               
+          
+                        - Plomberie:
+                     
+                  </option><option class="" value="1">
+                
+                     
+                
+                        Réparation Robinet
+                     
+                  </option><option class="" value="4">
+                
+                     
+                
+                        Changement Flexible
+                     
+                  </option><option class="" value="5">
+                
+                     
+                
+                        Réparation Fuite d'eau
+                     
+                  </option><option class="" value="7">
+                
+                     
+                
+                        Débouchage Lavabo
+                     
+                  </option><option class="" value="8">
+                
+                     
+                
+                        Installation Robinet
+                     
+                  </option><option class="" value="9">
+                
+                     
+                
+                        Installation WC
+                     
+                  </option><option class="" value="40">
+                
+                     
+                
+                        Réparation circuit sanitaire
+                     
+                  </option><option class="" value="80">
+                
+                     
+                
+                        réparation flexible robinet mitigeur
+                     
+                  </option><option class="" value="81">
+                
+                     
+                
+                        changement  robinet mitigeur de salle de bain
+                     
+                  </option><option class="" value="82">
+                
+                     
+                
+                        changement  robinet melangeur de salle de bain
+                     
+                  </option><option class="" value="84">
+                
+                     
+                
+                        changement bonde et flexible lavabo
+                     
+                  </option><option class="" value="85">
+                
+                     
+                
+                        changement bonde et siphon
+                     
+                  </option><option class="" value="86">
+                
+                     
+                
+                        pose lavabo meuble
+                     
+                  </option><option class="" value="87">
+                
+                     
+                
+                        pose lavabo standard
+                     
+                  </option><option class="" value="88">
+                
+                     
+                
+                        pose lavabo lave main
+                     
+                  </option><option class="" value="89">
+                
+                     
+                
+                        installation cuvette standard
+                     
+                  </option><option class="" value="90">
+                
+                     
+                
+                        installation cuvette suspendu
+                     
+                  </option><option class="" value="91">
+                
+                     
+                
+                        changement mécanisme chasse  d_eau
+                     
+                  </option><option class="" value="92">
+                
+                     
+                
+                        diagnostique panne mécanisme cuvette suspendu
+                     
+                  </option><option class="" value="93">
+                
+                     
+                
+                        changement robinet equerre
+                     
+                  </option><option class="" value="94">
+                
+                     
+                
+                        changement douchette WC
+                     
+                  </option><option class="" value="95">
+                
+                     
+                
+                        changement mitigeur de douche
+                     
+                  </option><option class="" value="96">
+                
+                     
+                
+                        montage cabine de douche
+                     
+                  </option><option class="" value="97">
+                
+                     
+                
+                        changement siphon bagnoire
+                     
+                  </option><option class="" value="98">
+                
+                     
+                
+                        changement mélangeur/mitigeur de cuisine
+                     
+                  </option><option class="" value="99">
+                
+                     
+                
+                        changement siphon evier
+                     
+                  </option><option class="" value="100">
+                
+                     
+                
+                        changement / pose robinet machine a laver
+                     
+                  </option><option class="" value="101">
+                
+                     
+                
+                        changement siphon machine a laver
+                     
+                  </option><option class="" value="102">
+                
+                     
+                
+                        pose siphon italienne de sol
+                     
+                  </option><option class="" value="103">
+                
+                     
+                
+                        pose siphon standard
+                     
+                  </option><option class="" value="104">
+                
+                     
+                
+                        changement robinet de jardin
+                     
+                  </option><option class="" value="113">
+                
+                     
+                
+                        devis instalation plomberie
+                     
+                  </option><option disabled value="">
+                
+                     
+                
+                        - Chauffage:
+                     
+                  </option><option class="" value="11">
+                
+                     
+                
+                        Pose chauffe bain
+                     
+                  </option><option class="" value="12">
+                
+                     
+                
+                        Réparation chauffe bain
+                     
+                  </option><option class="" value="37">
+                
+                     
+                
+                        Réparation fuite d'eau chaudiére
+                     
+                  </option><option class="" value="38">
+                
+                     
+                
+                        Mise en marche chaudiére
+                     
+                  </option><option class="" value="41">
+                
+                     
+                
+                        Remplacement pompe de circulation
+                     
+                  </option><option class="" value="42">
+                
+                     
+                
+                        Installation systéme de chauffage
+                     
+                  </option><option class="" value="105">
+                
+                     
+                
+                        pose radiateur aluminum
+                     
+                  </option><option class="" value="106">
+                
+                     
+                
+                        pose radiateur fonte
+                     
+                  </option><option class="" value="107">
+                
+                     
+                
+                        pose Chaudiére
+                     
+                  </option><option class="" value="108">
+                
+                     
+                
+                        pose chauffe bain
+                     
+                  </option><option class="" value="109">
+                
+                     
+                
+                        pose  collecteur 10 départs
+                     
+                  </option><option class="" value="110">
+                
+                     
+                
+                        pose  collecteur 20 départs
+                     
+                  </option><option class="" value="111">
+                
+                     
+                
+                        Réparation chauffe bain
+                     
+                  </option><option disabled value="">
+                
+                     
+                
+                        - Electricité:
+                     
+                  </option><option class="" value="3">
+                
+                     
+                
+                        Installation Réglette LED / Néon
+                     
+                  </option><option class="" value="21">
+                
+                     
+                
+                        Réparation Lustre
+                     
+                  </option><option class="" value="23">
+                
+                     
+                
+                        Réparation Sonette
+                     
+                  </option><option class="" value="25">
+                
+                     
+                
+                        Réparation Spots
+                     
+                  </option><option class="" value="26">
+                
+                     
+                
+                        Réparation Interphone
+                     
+                  </option><option class="" value="27">
+                
+                     
+                
+                        Reparation Visiophone
+                     
+                  </option><option class="" value="29">
+                
+                     
+                
+                        Coupure totale d'électricité
+                     
+                  </option><option class="" value="30">
+                
+                     
+                
+                        Pose sonnette électrique
+                     
+                  </option><option class="" value="43">
+                
+                     
+                
+                        branchement cable d'alimentation climatiseur avec prise
+                     
+                  </option><option class="" value="44">
+                
+                     
+                
+                        installation ligne d'alimentation pour clim jusqua 12 métre
+                     
+                  </option><option class="" value="45">
+                
+                     
+                
+                        Pose 1 métre tube Iro
+                     
+                  </option><option class="" value="46">
+                
+                     
+                
+                        Installation Interrupteur de volets roulants ( apparent )
+                     
+                  </option><option class="" value="47">
+                
+                     
+                
+                        Installation Interrupteur de volets roulants (encastré )
+                     
+                  </option><option class="" value="48">
+                
+                     
+                
+                        installation applique
+                     
+                  </option><option class="" value="49">
+                
+                     
+                
+                        installation petit lustre
+                     
+                  </option><option class="" value="50">
+                
+                     
+                
+                        installation lustre moyenne dimension
+                     
+                  </option><option class="" value="51">
+                
+                     
+                
+                        installation lustre grande dimension
+                     
+                  </option><option class="" value="52">
+                
+                     
+                
+                        instalaltion lustre spéciale
+                     
+                  </option><option class="" value="53">
+                
+                     
+                
+                        réparation applique
+                     
+                  </option><option class="" value="54">
+                
+                     
+                
+                        Pose et mise en marche interphone
+                     
+                  </option><option class="" value="55">
+                
+                     
+                
+                        installation de interphone  Comelit jusqu'a 10métres
+                     
+                  </option><option class="" value="56">
+                
+                     
+                
+                        installation de visiophone  hikvision
+                     
+                  </option><option class="" value="57">
+                
+                     
+                
+                        installation visiophone le grand
+                     
+                  </option><option class="" value="58">
+                
+                     
+                
+                        changement interrepteur lustre
+                     
+                  </option><option class="" value="59">
+                
+                     
+                
+                        installation serrure electrique
+                     
+                  </option><option class="" value="60">
+                
+                     
+                
+                        installation sonnette jusqu'a 10 métre
+                     
+                  </option><option class="" value="61">
+                
+                     
+                
+                        installation 20 Metre de ruban LED
+                     
+                  </option><option class="" value="62">
+                
+                     
+                
+                        installation spot
+                     
+                  </option><option class="" value="63">
+                
+                     
+                
+                        installation 10 spots led
+                     
+                  </option><option class="" value="64">
+                
+                     
+                
+                        installation 20 spots led
+                     
+                  </option><option class="" value="65">
+                
+                     
+                
+                        instalaltion 30 spots led
+                     
+                  </option><option class="" value="66">
+                
+                     
+                
+                        installation prise de terre
+                     
+                  </option><option class="" value="67">
+                
+                     
+                
+                        pose 1 metre moulure standard
+                     
+                  </option><option class="" value="68">
+                
+                     
+                
+                        pose de détecteur de mouvement
+                     
+                  </option><option class="" value="69">
+                
+                     
+                
+                        pose détecteur de mouvement + lampe
+                     
+                  </option><option class="" value="70">
+                
+                     
+                
+                        diagnostique de panne
+                     
+                  </option><option class="" value="71">
+                
+                     
+                
+                        rapport electrique S+1
+                     
+                  </option><option class="" value="72">
+                
+                     
+                
+                        rapport electrique S+2
+                     
+                  </option><option class="" value="73">
+                
+                     
+                
+                        rapport electrique S+3
+                     
+                  </option><option class="" value="74">
+                
+                     
+                
+                        vérification coffret electrique
+                     
+                  </option><option class="" value="76">
+                
+                     
+                
+                        pose hotte cuisine
+                     
+                  </option><option class="" value="77">
+                
+                     
+                
+                        Changement ventilateur d'extraction
+                     
+                  </option><option class="" value="78">
+                
+                     
+                
+                        Installation ventilateur d'extraction
+                     
+                  </option><option class="" value="79">
+                
+                     
+                
+                        visite technique et devis
+                     
+                  </option><option class="" value="112">
+                
+                     
+                
+                        devis installation électrique
+                     
+                  </option><option disabled value="">
+                
+                     
+                
+                        - Climatisation:
+                     
+                  </option><option class="" value="13">
+                
+                     
+                
+                        Réparation carte Electronique Climatiseur
+                     
+                  </option><option class="" value="14">
+                
+                     
+                
+                        Entretien et nettoyage climatiseur
+                     
+                  </option><option class="" value="15">
+                
+                     
+                
+                        Changement Sonde température
+                     
+                  </option><option class="" value="16">
+                
+                     
+                
+                        Soudure tuyaux cuivre
+                     
+                  </option><option class="" value="17">
+                
+                     
+                
+                        Changement carte électronique climatiseur
+                     
+                  </option><option class="" value="18">
+                
+                     
+                
+                        Réparation tuyaux cuivre
+                     
+                  </option><option class="" value="19">
+                
+                     
+                
+                        Installation Climatiseur 9000 BTU
+                     
+                  </option><option class="" value="20">
+                
+                     
+                
+                        Démontage Climatiseur 9000 BTU
+                     
+                  </option><option class="" value="114">
+                
+                     
+                
+                        devis Installation climatisation en encastré
+                     
+                  </option>
+                  <option value="other">Autre</option></select>
+                  </div>
+                 
+                 
+                  <div class="form-group">
+                    <textarea class="form-control" name="" rows="5" placeholder="déscription de la panne (facultatif)" [(ngModel)]="order.description" formControlName="description"></textarea>
+                  </div>
+               
+              
+                <div class="text-center "><button type="submit" (click)="addOrder(addOrderForm.value)">Commander</button></div>
+              </form>
+            </div>
+            <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
+              <img src="assets/vectors/order.png" class="img-fluid animated" alt="" style="margin-left: 100px;">
+            </div>
+  
+          </div>
+  
+        </div>
+      </section><!-- End Contact Section -->

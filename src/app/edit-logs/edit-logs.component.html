@@ -1,0 +1,103 @@
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact" style="margin-top: 100px;">
+        <div class="container">
+  
+          <div class="section-title" data-aos="fade-up">
+            <h2>compte</h2>
+          </div>
+  
+          <div class="row" >
+            <div class="col-lg-5 col-md-12" data-aos="fade-up" data-aos-delay="300" *ngIf="!path">
+              <form  class="php-email-form" #editLogsForm="ngForm" (ngSubmit)="edit()">
+              
+                <div class="form-group">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" [(ngModel)]="user.email"[ngModelOptions]="{standalone:true}" required>
+                </div>
+               
+                <div class="form-group">
+                    <input type="password" class="form-control" name="subject" id="Password" placeholder="nouveau mot de passe" [(ngModel)]="user.password"[ngModelOptions]="{standalone:true}" required>
+                  </div>
+                <div class="form-group">
+                    <input type="tel" name="tel" class="form-control" id="tel" placeholder="numero" [(ngModel)]="user.tel"[ngModelOptions]="{standalone:true}" required>
+                  </div>
+                    <div class="form-group">
+                      <select class="form-control" [(ngModel)]="user.zone"[ngModelOptions]="{standalone:true}"  required>
+                        <option value="" selected >Gouvernorat</option>
+                        <option value="ariana">Ariana</option>
+                        <option value="beja">Béja</option>
+                        <option value="benarous">Ben Arous</option>
+                        <option value="bizerte">Bizerte</option>
+                        <option value="gabes">Gabès</option>
+                        <option value="gafsa">Gafsa</option>
+                        <option value="jendouba">Jendouba</option>
+                        <option value="kairouan">Kairouan</option>
+                        <option value="kasserine">Kasserine</option>
+                        <option value="kebili">Kébili</option>
+                        <option value="kef">Le Kef</option>
+                        <option value="mahdia">Mahdia</option>
+                        <option value="manouba">La Manouba</option>
+                        <option value="medenine">Médenine</option>
+                        <option value="monastir">Monastir</option>
+                        <option value="nabeul">Nabeul</option>
+                        <option value="sfax">Sfax</option>
+                        <option value="sidiBouzid">SidiBouzid</option>
+                        <option value="siliana">Siliana</option>
+                        <option value="sousse">Sousse</option>
+                        <option value="tataouine">Tataouine</option>
+                        <option value="tozeur">Tozeur</option>
+                        <option value="tunis">Tunis</option>
+                        <option value="zaghouan">Zaghouan</option>
+                      </select>
+                    </div>
+                 
+                <div class="text-center "><button type="submit">Changer</button></div>
+              </form>
+            </div>
+
+            <div class="col-lg-5 col-md-12" data-aos="fade-up" data-aos-delay="300" *ngIf="path">
+              <form  class="php-email-form" [formGroup]="retrieve">
+              
+                
+               
+                <div class="form-group">
+                    <input type="password" class="form-control" name="subject" id="Password" formControlName="newPwd" placeholder="nouveau mot de passe"  required>
+                  </div>
+                                    <!-- password alt -->
+                                    <div *ngIf="retrieve.controls['newPwd'].invalid && (retrieve.controls['newPwd'].dirty || retrieve.controls['newPwd'].touched)" class="alert alert-danger">
+
+                                      <div *ngIf="retrieve.controls['newPwd'].errors.required" class="text-danger">
+                                          Mot de passe obligatoire
+                                      </div>
+                    
+                                      <div *ngIf="retrieve.controls['newPwd'].errors.minlength" class="text-danger">
+                                        Le mot de passe doit contenir au moins 8 caractères
+                                      </div>
+                    
+                                  </div>
+                                    <!-- /password alt -->
+                                    <div class="form-group">
+                                      <input type="password" class="form-control" name="subject" id="Password" formControlName="confirmPwd" placeholder="retaper le mot de passe"  required>
+                                    </div>
+                                      <!-- alt confirm password -->
+                     <div *ngIf="retrieve.controls['confirmPwd'].invalid && (retrieve.controls['confirmPwd'].dirty || retrieve.controls['confirmPwd'].touched)" class="alert alert-danger">
+
+                      <div *ngIf="retrieve.controls['confirmPwd'].errors.mustMatch" class="text-danger">
+                           Confirmer votre mot de passe
+                      </div>
+
+                  </div>
+                  <!-- /alt confirm password -->
+                    
+                 
+                <div class="text-center "><button type="submit" (click)="retrieveFN(retrieve.value)">Changer</button></div>
+              </form>
+            </div>
+
+            <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
+              <img src="assets/vectors/20945781.jpg" class="img-fluid animated" alt="">
+            </div>
+  
+          </div>
+  
+        </div>
+      </section><!-- End Contact Section -->

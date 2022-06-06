@@ -1,0 +1,168 @@
+<section id="contact" class="contact" style="margin-top: 100px;">
+    <div class="container">
+
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Clients</button>
+          <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Tenchiniciens en attente</button>
+          <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Techniciens confirmés</button>
+          <button class="nav-link" id="nav-orders-tab" data-bs-toggle="tab" data-bs-target="#nav-orders" type="button" role="tab" aria-controls="nav-orders" aria-selected="false">Commandes en attente</button>
+          <button class="nav-link" id="nav-history-tab" data-bs-toggle="tab" data-bs-target="#nav-history" type="button" role="tab" aria-controls="nav-history" aria-selected="false">Historique</button>
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+          <table class="table table-striped table-hover" style="color:#3498db;">
+            <tr>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Tel</th>
+            <th>Actions</th>
+            </tr>
+            <tr *ngFor="let c of clients">
+                <td>{{c.name}}</td>
+                <td>{{c.email}}</td>
+                <td>{{c.tel}}</td>
+                <td>
+                    <button type="button" class="btn btn-outline-danger" (click)="deleteUser(c._id)">Supprimer</button>
+                    <button type="button" class="btn btn-outline-info" (click)="displayClient(c)">Afficher</button>
+                </td>
+            </tr>
+            
+          </table>
+        </div>
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+          <table class="table table-striped table-hover" style="color:#3498db;">
+            <tr>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Tel</th>
+            <th>Spécialité</th>
+            <th>Experience</th>
+            <th>Actions</th>
+            </tr>
+            <tr *ngFor="let p of pendingTechs">
+                <td>{{p.name}}</td>
+                <td>{{p.email}}</td>
+                <td>{{p.tel}}</td>
+                <td>{{p.speciality}}</td>
+                <td>{{p.experience}}</td>
+                <td>
+                    <button type="button" class="btn btn-outline-danger" (click)="deleteUser(p._id)">Refuser</button>
+                    <button type="button" class="btn btn-outline-info" (click)="displayTech(p)">Afficher</button>
+                    <button type="button" class="btn btn-outline-success" (click)="approve(p)">Accepter</button>
+                </td>
+            </tr>
+            
+          </table>
+        </div>
+        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+          <table class="table table-striped table-hover" style="color:#3498db;">
+            <tr>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Tel</th>
+            <th>Spécialité</th>
+            <th>Experience</th>
+            <th>Actions</th>
+            </tr>
+            <tr *ngFor="let t of techs">
+                <td>{{t.name}}</td>
+                <td>{{t.email}}</td>
+                <td>{{t.tel}}</td>
+                <td>{{t.speciality}}</td>
+                <td>{{t.experience}}</td>
+                <td>
+                    <button type="button" class="btn btn-outline-danger" (click)="deleteUser(t._id)">Supprimer</button>
+                    <button type="button" class="btn btn-outline-info" (click)="displayTech(t)">Afficher</button>
+                </td>
+            </tr>
+            
+          </table>
+        </div>
+        <div class="tab-pane fade" id="nav-orders" role="tabpanel" aria-labelledby="nav-orders-tab">
+          <table class="table table-striped table-hover" style="color:#3498db;">
+            <tr>
+            <th>Nom du client</th>
+            <th>Email</th>
+            <th>Tel</th>
+            <th>Date</th>
+            <th>Gouvernorat</th>
+            <th>Adresse</th>
+            <th>Service</th>
+            <th>Prix</th>
+            <th>Actions</th>
+            </tr>
+            <ng-container *ngFor="let o of orders">
+              <tr *ngIf="o.status == 'pending'">
+                <ng-container *ngFor="let c of clients" >
+                       
+                        
+                  <td *ngIf="o.idClient == c._id">{{c.name}}</td>
+                  <td *ngIf="o.idClient == c._id">{{c.email}}</td>
+                  <td *ngIf="o.idClient == c._id">{{c.tel}}</td>
+                 </ng-container>
+                
+                <td>{{o.date}}</td>
+                <td>{{o.zone}}</td>
+                <td>{{o.adress}}</td>
+                <td>{{o.service}}</td>
+                <td>{{o.price}}</td>
+                <td>
+                    <button type="button" class="btn btn-outline-danger" (click)="deleteOrder(o._id)">Delete</button>
+                </td>
+            </tr>
+            </ng-container>
+          
+            
+          </table>
+        </div>
+        
+        <div class="tab-pane fade" id="nav-history" role="tabpanel" aria-labelledby="nav-history-tab">
+          <table class="table table-striped table-hover" style="color:#3498db;">
+            <tr>
+            <th>Nom du client</th>
+            <th>Email</th>
+            <th>Tel</th>
+            <th>Date</th>
+            <th>Gouvernorat</th>
+            <th>Nom du tech</th>
+            <th>Prix</th>
+            </tr>
+            <ng-container *ngFor="let o of orders">
+              <tr *ngIf="o.status == 'finished'">
+                <ng-container *ngFor="let c of clients" >
+                       
+                        
+                  <td *ngIf="o.idClient == c._id">{{c.name}}</td>
+                  <td *ngIf="o.idClient == c._id">{{c.email}}</td>
+                  <td *ngIf="o.idClient == c._id">{{c.tel}}</td>
+            </ng-container>
+                
+                <td>{{o.date}}</td>
+                <td>{{o.zone}}</td>
+                <ng-container *ngFor="let t of techs" >
+                       
+                        
+                  <td *ngIf="o.idTech == t._id">{{t.name}}</td>
+            </ng-container>
+                  <td>{{o.price}} DT</td>
+                  <td>
+                    <button type="button" class="btn btn-outline-info" (click)="displaOrder(o)">Avis</button>
+                  </td>
+               
+            </tr>
+            </ng-container>
+          
+            
+          </table>
+        </div>
+      
+      </div>
+      
+
+
+
+  </div>
+  </section>
+  

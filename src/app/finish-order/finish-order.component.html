@@ -1,0 +1,16 @@
+<section id="contact" class="contact" style="margin-top: 100px;margin-left: 500px;">
+    <div class="container">
+        <div class="row" >
+            <div class="col-lg-5 col-md-12" data-aos="fade-up" data-aos-delay="300">
+              <form  class="php-email-form" [formGroup]="editForm">
+                <div class="form-group">
+                    <input type="text" name="price" class="form-control" id="price" formControlName="price" placeholder="Entrez le prix finale de l'intervention" required>
+                  </div>
+                  <div class="text-center "><button type="submit" (click)="finishOrder(editForm.value)">Finaliser</button></div>
+
+                </form>
+                </div>
+                </div>
+                </div>
+                </section>
+     
